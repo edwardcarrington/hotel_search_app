@@ -24,23 +24,12 @@ public class HotelDao {
 	}
 
 	public Object getHotelInfoByCity() {
-		List<String> cities = em.createQuery("SELECT DISTINCT city from Hotel", String.class).getResultList();
-		return new TreeSet<>(cities);
+		List<String> cityList = em.createQuery("SELECT DISTINCT city from Hotel", String.class).getResultList();
+		return new TreeSet<>(cityList);
 	}
 
 	public List<Hotel> findByCity(String city) {
-		return em.createQuery("from Hotel where city = :city order by pricePerNight", Hotel.class)
-				.setParameter("city", city).getResultList();
+		return em.createQuery("FROM Hotel WHERE city = :city ORDER BY pricePerNight").setParameter("city", city)
+				.getResultList();
 	}
-
-	// public Hotel findById(Long id) {
-//		// TODO Auto-generated method stub
-//		return em.find(Hotel.class, id);
-//	}
-//
-//	public List<Hotel> findByName(String name) {
-//		// TODO Auto-generated method stub
-//		return em.createQuery("from Product where name like = :n", Hotel.class).setParameter("n", "%" + name + "%") // .getResultList()
-//				.getResultList(); // :n = "name"
-
 }

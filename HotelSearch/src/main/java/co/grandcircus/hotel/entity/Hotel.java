@@ -1,5 +1,6 @@
 package co.grandcircus.hotel.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,9 +13,17 @@ public class Hotel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@Column(name = "hotel_id")
 	private Long id;
+
+	@Column(name = "hotel_name")
 	private String name;
+
+	@Column(name = "city")
 	private String city;
+
+	@Column(name = "price_per_night")
 	private Integer pricePerNight;
 
 	public Hotel() {
